@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------------------
+#
+# To view the available tasks, run:
+# > rake -T
+#
+# ------------------------------------------------------------------------------
+
+namespace :app do
+    rake_env=ENV['RAKE_ENV']
+
+    desc "Build the app"
+    task :build do
+        `go build -o test_ws`
+    end
+
+    desc "List the env"
+    task :env do
+        puts "Current env is #{ENV['RAKE_ENV']}"
+    end
+
+    desc "Automatically build the app"
+    task :auto_build do
+        sh 'CompileDaemon -build="go build -o test_ws" -color=true'
+    end
+
+end
